@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BreadSMP - Minecraft Server Indonesia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+    body{
+      background:linear-gradient(135deg,#020617,#020b2d);
+      color:#fff;
+      line-height:1.6;
+    }
+
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 20px;
+      background:
+        radial-gradient(circle at top,#1d4ed8,#020617 60%),
+        linear-gradient(180deg,#020617,#020b2d);
+    }
+
+    header img{
+      width:180px;
+      margin-bottom:25px;
+      filter:drop-shadow(0 12px 30px rgba(56,189,248,.6));
+    }
+
+    header h1{
+      font-size:3.3rem;
+      color:#38bdf8;
+      text-shadow:0 0 20px rgba(56,189,248,.6);
+    }
+
+    header p{
+      margin-top:12px;
+      max-width:520px;
+      margin-inline:auto;
+      color:#c7d2fe;
+      font-size:1.15rem;
+    }
+
+    .divider{
+      width:90px;
+      height:4px;
+      background:linear-gradient(90deg,#38bdf8,transparent);
+      margin:28px auto;
+      border-radius:10px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin:10px;
+      padding:14px 32px;
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      color:#fff;
+      text-decoration:none;
+      border-radius:16px;
+      font-weight:600;
+      transition:.3s;
+      box-shadow:0 12px 30px rgba(37,99,235,.4);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px) scale(1.06);
+      letter-spacing:1px;
+      box-shadow:0 18px 45px rgba(56,189,248,.6);
+    }
+
+    section{
+      padding:90px 20px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .title{text-align:center;margin-bottom:60px}
+    .title h2{font-size:2.4rem;color:#38bdf8}
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:32px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,#020617,#020b2d);
+      border:1px solid #1e3a8a;
+      padding:32px;
+      border-radius:22px;
+      transition:.35s;
+      box-shadow:0 12px 28px rgba(0,0,0,.45);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#38bdf8;
+      box-shadow:0 22px 50px rgba(56,189,248,.35);
+    }
+
+    .card h3{margin-bottom:14px;color:#60a5fa}
+
+    .info{
+      text-align:center;
+      font-size:1.15rem;
+      color:#e0e7ff;
+    }
+
+    .status{
+      margin-top:26px;
+      font-size:1.1rem;
+      color:#a5f3fc;
+    }
+
+    footer{
+      text-align:center;
+      padding:28px;
+      background:#020617;
+      border-top:1px solid #1e3a8a;
+      font-size:.9rem;
+      color:#94a3b8;
+    }
+  </style></head>
+<body><header>
+  <div data-aos="zoom-in">
+    <img src="logo.png" alt="BreadSMP Logo">
+    <h1>🍞 BreadSMP</h1>
+    <p>Server SMP Indonesia dengan komunitas aktif, sistem adil, dan gameplay yang nyaman untuk semua player.</p>
+    <div class="divider"></div>
+    <div>
+      <a href="https://discord.gg/Z3Sz4CnNmm" class="btn">Discord</a>
+      <a href="https://chat.whatsapp.com/EaiP7jSBymsHYaYXBBJgYL?mode=hqrt2" class="btn">WhatsApp</a>
+      <a href="https://minecraft-mp.com/server-s351550" class="btn">Vote</a>
+    </div>
+    <div class="status" id="mc-status">🟢 IP: <strong>play.breadsmp.my.id</strong> • PORT: <strong>55555</strong></div>
+  </div>
+</header><section>
+  <div class="title" data-aos="fade-up">
+    <h2>✨ Fitur Unggulan</h2>
+  </div>
+  <div class="features">
+    <div class="card" data-aos="fade-up">
+      <h3>Survival SMP</h3>
+      <p>Gameplay survival original dengan sistem seimbang dan bebas pay-to-win.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <h3>Claim & Anti Grief</h3>
+      <p>Proteksi tanah aman, anti cheat aktif, dan staff siap membantu.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <h3>Economy Stabil</h3>
+      <p>Sistem uang, shop, dan trading yang stabil dan fair.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <h3>Community Aktif</h3>
+      <p>Discord & WhatsApp aktif, event rutin, dan player ramah.</p>
+    </div>
+  </div>
+</section><section id="join">
+  <div class="title" data-aos="fade-up">
+    <h2>🚀 Cara Join</h2>
+  </div>
+  <div class="info" data-aos="zoom-in">
+    <p><b>IP Server:</b> breadsmp.my.id</p>
+    <p><b>Version:</b> 1.20+</p>
+    <p><b>Mode:</b> Java & Bedrock</p>
+  </div>
+</section><footer>
+  © 2026 BreadSMP • Community Driven Minecraft Server
+</footer><script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script><script>
+  AOS.init({duration:900,once:true});
+
+  fetch("https://api.mcsrvstat.us/2/breadsmp.my.id")
+    .then(res=>res.json())
+    .then(data=>{
+      const el=document.getElementById("mc-status");
+      if(data.online){
+        el.innerHTML=`🟢 Online — ${data.players.online}/${data.players.max} Player`;
+      }else{
+        el.innerHTML="🔴 Offline";
+      }
+    })
+    .catch(()=>{
+      document.getElementById("mc-status").innerHTML="⚠️ Status tidak tersedia";
+    });
+</script></body>
+</html>
