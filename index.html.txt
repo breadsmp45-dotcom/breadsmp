@@ -166,6 +166,7 @@
   </div>
   <div class="info" data-aos="zoom-in">
     <p><b>IP Server:</b> breadsmp.my.id</p>
+    <p><b>PORT : 55555</p>
     <p><b>Version:</b> 1.20+</p>
     <p><b>Mode:</b> Java & Bedrock</p>
   </div>
@@ -188,4 +189,5 @@
       document.getElementById("mc-status").innerHTML="⚠️ Status tidak tersedia";
     });
 </script></body>
+
 </html>
