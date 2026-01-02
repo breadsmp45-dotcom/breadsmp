@@ -178,7 +178,7 @@
 </section>
 
 <footer>
-  © 2026 BreadSMP • Community Driven Minecraft Server
+  © 2023 BreadSMP • Community Driven Minecraft Server
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -235,3 +235,4 @@ setInterval(loadServer,5000);
 
 </body>
 </html>
+
