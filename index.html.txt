@@ -162,11 +162,15 @@
     <p style="color:#c7d2fe">Kenapa harus main di server kami?</p>
   </div>
 
+  <!-- FITUR JADI 8 -->
   <div class="features">
-    <div class="card">⚔️ Survival SMP – economy seimbang</div>
+    <div class="card">⚔️ Survival SMP – Economy seimbang</div>
     <div class="card">🛡️ Claim & Anti Grief</div>
-    <div class="card">💰 Tanpa Pay to Win</div>
-    <div class="card">🌍 Java & Bedrock</div>
+    <div class="card">🧑‍🔧 Jobs System</div>
+    <div class="card">🧭 Warp & Spawn</div>
+    <div class="card">✨ Custom Enchant</div>
+    <div class="card">🎲 Gacha System</div>
+    <div class="card">🌍 Java & Bedrock Support</div>
     <div class="card">👥 Community Aktif</div>
   </div>
 </section>
@@ -203,19 +207,38 @@ function loadServer(){
       statusText.innerHTML="🟢 Server Online";
       ipText.innerHTML="🌐 IP: <b>play.breadsmp.my.id</b> • PORT: <b>55555</b>";
       countEl.innerHTML=`👥 Player: <b>${d.players.online}</b> / <b>${d.players.max}</b>`;
-
       listEl.innerHTML="";
 
       if(d.players.list){
+        const javaPlayers=[];
+        const bedrockPlayers=[];
+
         d.players.list.forEach(p=>{
-          const name = typeof p === "string" ? p : p.name;
+          const name = typeof p==="string"?p:p.name;
           if(!name) return;
 
-          const el = document.createElement("div");
+          if(name.startsWith(".")){
+            bedrockPlayers.push(name.replace(".",""));
+          }else{
+            javaPlayers.push(name);
+          }
+        });
+
+        [...javaPlayers,...bedrockPlayers].forEach(name=>{
+          const isBedrock = bedrockPlayers.includes(name);
+          const el=document.createElement("div");
           el.className="player-badge";
           el.innerHTML=`
             <img src="https://mc-heads.net/avatar/${name}/32">
             ${name}
+            <span style="
+              font-size:.7rem;
+              padding:2px 6px;
+              border-radius:6px;
+              background:${isBedrock?'#22c55e':'#3b82f6'};
+            ">
+              ${isBedrock?'BEDROCK':'JAVA'}
+            </span>
           `;
           listEl.appendChild(el);
         });
@@ -229,7 +252,7 @@ function loadServer(){
 }
 
 loadServer();
-setInterval(loadServer, 5000);
+setInterval(loadServer,5000);
 </script>
 
 </body>
