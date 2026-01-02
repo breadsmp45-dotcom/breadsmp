@@ -145,7 +145,7 @@
   <div class="features">
     <div class="card" data-aos="fade-up">
       <h3>Survival SMP</h3>
-      <p>Gameplay survival original dengan sistem seimbang dan bebas pay-to-win.</p>
+      <p>Gameplay survival original dengan sistem yg menarik.</p>
     </div>
     <div class="card" data-aos="fade-up" data-aos-delay="100">
       <h3>Claim & Anti Grief</h3>
@@ -191,3 +191,4 @@
 </script></body>
 
 </html>
+
