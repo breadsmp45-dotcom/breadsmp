@@ -79,6 +79,7 @@
 
     .title{text-align:center;margin-bottom:60px}
     .title h2{color:#38bdf8}
+    .title p{color:#c7d2fe;margin-top:10px}
 
     .features{
       display:grid;
@@ -93,6 +94,8 @@
       border-radius:22px;
       box-shadow:0 12px 28px rgba(0,0,0,.45);
     }
+
+    .card h3{color:#60a5fa;margin-bottom:10px}
 
     /* PLAYER LIST */
     .player-list{
@@ -159,19 +162,18 @@
 <section>
   <div class="title" data-aos="fade-up">
     <h2>✨ Fitur Unggulan BreadSMP</h2>
-    <p style="color:#c7d2fe">Kenapa harus main di server kami?</p>
+    <p>Kenapa harus main di server kami?</p>
   </div>
 
-  <!-- FITUR JADI 8 -->
   <div class="features">
-    <div class="card">⚔️ Survival SMP – Economy seimbang</div>
-    <div class="card">🛡️ Claim & Anti Grief</div>
-    <div class="card">🧑‍🔧 Jobs System</div>
-    <div class="card">🧭 Warp & Spawn</div>
-    <div class="card">✨ Custom Enchant</div>
-    <div class="card">🎲 Gacha System</div>
-    <div class="card">🌍 Java & Bedrock Support</div>
-    <div class="card">👥 Community Aktif</div>
+    <div class="card"><h3>⚔️ Survival SMP</h3><p>Mode survival dengan economy seimbang, cocok untuk player santai maupun builder.</p></div>
+    <div class="card"><h3>🛡️ Claim & Anti Grief</h3><p>Sistem proteksi tanah agar bangunan tetap aman.</p></div>
+    <div class="card"><h3>🧑‍🔧 Jobs System</h3><p>Banyak pilihan pekerjaan untuk mendapatkan uang.</p></div>
+    <div class="card"><h3>🧭 Warp & Spawn</h3><p>Akses cepat ke lokasi penting server.</p></div>
+    <div class="card"><h3>✨ Custom Enchant</h3><p>Enchant unik dengan efek khusus.</p></div>
+    <div class="card"><h3>🎲 Gacha System</h3><p>Gacha item menarik tanpa merusak balance.</p></div>
+    <div class="card"><h3>🌍 Java & Bedrock</h3><p>Bisa dimainkan di Java & Bedrock Edition.</p></div>
+    <div class="card"><h3>👥 Community Aktif</h3><p>Discord & WhatsApp aktif dengan admin responsif.</p></div>
   </div>
 </section>
 
@@ -183,72 +185,48 @@
 <script>
 AOS.init({ duration: 900, once: true });
 
-const API = "https://api.mcsrvstat.us/3/play.breadsmp.my.id:55555";
-
-const box = document.getElementById("server-box");
-const statusText = document.getElementById("mc-status-text");
-const ipText = document.getElementById("server-ip");
-const countEl = document.getElementById("player-count");
-const listEl = document.getElementById("player-list");
+const API="https://api.mcsrvstat.us/3/play.breadsmp.my.id:55555";
+const box=document.getElementById("server-box");
+const statusText=document.getElementById("mc-status-text");
+const ipText=document.getElementById("server-ip");
+const countEl=document.getElementById("player-count");
+const listEl=document.getElementById("player-list");
 
 function loadServer(){
-  fetch(API)
-    .then(r=>r.json())
-    .then(d=>{
-      box.style.display="block";
+  fetch(API).then(r=>r.json()).then(d=>{
+    box.style.display="block";
+    if(!d.online){
+      statusText.innerHTML="🔴 Server Offline";
+      return;
+    }
 
-      if(!d.online){
-        statusText.innerHTML="🔴 Server Offline";
-        countEl.innerHTML="";
-        listEl.innerHTML="";
-        return;
-      }
+    statusText.innerHTML="🟢 Server Online";
+    ipText.innerHTML="🌐 IP: <b>play.breadsmp.my.id</b> • PORT: <b>55555</b>";
+    countEl.innerHTML=`👥 Player: <b>${d.players.online}</b> / <b>${d.players.max}</b>`;
+    listEl.innerHTML="";
 
-      statusText.innerHTML="🟢 Server Online";
-      ipText.innerHTML="🌐 IP: <b>play.breadsmp.my.id</b> • PORT: <b>55555</b>";
-      countEl.innerHTML=`👥 Player: <b>${d.players.online}</b> / <b>${d.players.max}</b>`;
-      listEl.innerHTML="";
+    if(d.players.list){
+      const java=[],bedrock=[];
+      d.players.list.forEach(p=>{
+        const n=typeof p==="string"?p:p.name;
+        if(!n) return;
+        n.startsWith(".")?bedrock.push(n.replace(".","")):java.push(n);
+      });
 
-      if(d.players.list){
-        const javaPlayers=[];
-        const bedrockPlayers=[];
-
-        d.players.list.forEach(p=>{
-          const name = typeof p==="string"?p:p.name;
-          if(!name) return;
-
-          if(name.startsWith(".")){
-            bedrockPlayers.push(name.replace(".",""));
-          }else{
-            javaPlayers.push(name);
-          }
-        });
-
-        [...javaPlayers,...bedrockPlayers].forEach(name=>{
-          const isBedrock = bedrockPlayers.includes(name);
-          const el=document.createElement("div");
-          el.className="player-badge";
-          el.innerHTML=`
-            <img src="https://mc-heads.net/avatar/${name}/32">
-            ${name}
-            <span style="
-              font-size:.7rem;
-              padding:2px 6px;
-              border-radius:6px;
-              background:${isBedrock?'#22c55e':'#3b82f6'};
-            ">
-              ${isBedrock?'BEDROCK':'JAVA'}
-            </span>
-          `;
-          listEl.appendChild(el);
-        });
-      }else{
-        listEl.innerHTML="<i>Daftar player disembunyikan</i>";
-      }
-    })
-    .catch(()=>{
-      statusText.innerHTML="⚠️ Status tidak tersedia";
-    });
+      [...java,...bedrock].forEach(n=>{
+        const isBedrock=bedrock.includes(n);
+        const el=document.createElement("div");
+        el.className="player-badge";
+        el.innerHTML=`
+          <img src="https://cravatar.eu/avatar/${n}/32" onerror="this.src='https://cravatar.eu/avatar/Steve/32'">
+          ${n}
+          <span style="font-size:.7rem;padding:2px 6px;border-radius:6px;background:${isBedrock?'#22c55e':'#3b82f6'}">
+            ${isBedrock?'BEDROCK':'JAVA'}
+          </span>`;
+        listEl.appendChild(el);
+      });
+    }
+  });
 }
 
 loadServer();
