@@ -14,7 +14,6 @@
     body{
       background:linear-gradient(135deg,#020617,#020b2d);
       color:#fff;
-      line-height:1.6;
     }
 
     header{
@@ -46,7 +45,6 @@
       max-width:520px;
       margin-inline:auto;
       color:#c7d2fe;
-      font-size:1.15rem;
     }
 
     .divider{
@@ -63,16 +61,14 @@
       padding:14px 32px;
       background:linear-gradient(135deg,#2563eb,#38bdf8);
       color:#fff;
-      text-decoration:none;
       border-radius:16px;
       font-weight:600;
+      text-decoration:none;
       transition:.3s;
-      box-shadow:0 12px 30px rgba(37,99,235,.4);
     }
 
     .btn:hover{
-      transform:translateY(-5px) scale(1.06);
-      box-shadow:0 18px 45px rgba(56,189,248,.6);
+      transform:translateY(-5px) scale(1.05);
     }
 
     section{
@@ -82,7 +78,7 @@
     }
 
     .title{text-align:center;margin-bottom:60px}
-    .title h2{font-size:2.4rem;color:#38bdf8}
+    .title h2{color:#38bdf8}
 
     .features{
       display:grid;
@@ -95,25 +91,41 @@
       border:1px solid #1e3a8a;
       padding:32px;
       border-radius:22px;
-      transition:.35s;
       box-shadow:0 12px 28px rgba(0,0,0,.45);
     }
 
-    .card:hover{
-      transform:translateY(-10px);
-      border-color:#38bdf8;
-      box-shadow:0 22px 50px rgba(56,189,248,.35);
+    /* PLAYER LIST */
+    .player-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
     }
 
-    .card h3{margin-bottom:14px;color:#60a5fa}
+    .player-badge{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      background:#020617;
+      border:1px solid #1e3a8a;
+      border-radius:999px;
+      font-size:.9rem;
+    }
+
+    .player-badge img{
+      width:28px;
+      height:28px;
+      border-radius:6px;
+    }
 
     footer{
       text-align:center;
       padding:28px;
       background:#020617;
       border-top:1px solid #1e3a8a;
-      font-size:.9rem;
       color:#94a3b8;
+      font-size:.9rem;
     }
   </style>
 </head>
@@ -124,7 +136,7 @@
   <div data-aos="zoom-in">
     <img src="logo.png" alt="BreadSMP Logo">
     <h1>🍞 BreadSMP</h1>
-    <p>Server SMP Indonesia dengan komunitas aktif, sistem adil, dan gameplay yang nyaman.</p>
+    <p>Server SMP Indonesia dengan komunitas aktif, sistem adil, dan gameplay nyaman.</p>
 
     <div class="divider"></div>
 
@@ -134,13 +146,12 @@
       <a href="https://minecraft-mp.com/server-s351550" class="btn">Vote</a>
     </div>
 
-    <!-- BOX STATUS + PLAYER -->
-    <div id="server-box" class="card" style="max-width:460px;margin:30px auto 0;text-align:left;display:none">
-      <h3 id="mc-status-text" style="color:#38bdf8;margin-bottom:6px">
-        🟡 Mengecek server...
-      </h3>
-      <div id="player-count" style="color:#a5f3fc;margin-bottom:10px"></div>
-      <div id="player-list" style="color:#c7d2fe;font-size:.95rem"></div>
+    <!-- STATUS SERVER -->
+    <div id="server-box" class="card" style="max-width:480px;margin:30px auto 0;text-align:left;display:none">
+      <h3 id="mc-status-text">🟡 Mengecek server...</h3>
+      <p id="server-ip" style="color:#a5f3fc;margin:6px 0"></p>
+      <div id="player-count"></div>
+      <div id="player-list" class="player-list"></div>
     </div>
   </div>
 </header>
@@ -148,34 +159,15 @@
 <section>
   <div class="title" data-aos="fade-up">
     <h2>✨ Fitur Unggulan BreadSMP</h2>
-    <p style="color:#c7d2fe;margin-top:10px">Kenapa harus main di server kami?</p>
+    <p style="color:#c7d2fe">Kenapa harus main di server kami?</p>
   </div>
 
   <div class="features">
-    <div class="card" data-aos="fade-up">
-      <h3>⚔️ Survival SMP</h3>
-      <p>Survival economy, cocok untuk player santai maupun builder.</p>
-    </div>
-
-    <div class="card" data-aos="fade-up" data-aos-delay="100">
-      <h3>🛡️ Claim & Anti Grief</h3>
-      <p>Proteksi tanah aman menggunakan pagar dan shovel emas.</p>
-    </div>
-
-    <div class="card" data-aos="fade-up" data-aos-delay="200">
-      <h3>💰 Economy Seimbang</h3>
-      <p>Sistem uang, shop, auction, dan trade yang stabil dan adil.</p>
-    </div>
-
-    <div class="card" data-aos="fade-up" data-aos-delay="300">
-      <h3>🌍 Java & Bedrock</h3>
-      <p>Bisa dimainkan di Java & Bedrock Edition.</p>
-    </div>
-
-    <div class="card" data-aos="fade-up" data-aos-delay="400">
-      <h3>👥 Community Aktif</h3>
-      <p>Discord & WhatsApp aktif dengan admin responsif.</p>
-    </div>
+    <div class="card">⚔️ Survival SMP – economy seimbang</div>
+    <div class="card">🛡️ Claim & Anti Grief</div>
+    <div class="card">💰 Tanpa Pay to Win</div>
+    <div class="card">🌍 Java & Bedrock</div>
+    <div class="card">👥 Community Aktif</div>
   </div>
 </section>
 
@@ -185,40 +177,59 @@
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-  AOS.init({ duration: 900, once: true });
+AOS.init({ duration: 900, once: true });
 
-  const box = document.getElementById("server-box");
-  const statusText = document.getElementById("mc-status-text");
-  const countEl = document.getElementById("player-count");
-  const listEl = document.getElementById("player-list");
+const API = "https://api.mcsrvstat.us/3/play.breadsmp.my.id:55555";
 
-  function loadServer(){
-    fetch("https://api.mcsrvstat.us/3/play.breadsmp.my.id:55555")
-      .then(r=>r.json())
-      .then(d=>{
-        box.style.display="block";
-        if(d.online){
-          statusText.innerHTML="🟢 Server Online";
-          countEl.innerHTML=`👥 Player: <b>${d.players?.online ?? 0}</b>/<b>${d.players?.max ?? "?"}</b>`;
-          listEl.innerHTML=d.players?.list?.length
-            ? "<b>Online Player:</b><br>"+d.players.list.map(p=>"• "+p).join("<br>")
-            : "<i>Daftar player tidak tersedia</i>";
-        }else{
-          statusText.innerHTML="🔴 Server Offline";
-          countEl.innerHTML="";
-          listEl.innerHTML="";
-        }
-      })
-      .catch(()=>{
-        box.style.display="block";
-        statusText.innerHTML="⚠️ Status tidak dapat dimuat";
+const box = document.getElementById("server-box");
+const statusText = document.getElementById("mc-status-text");
+const ipText = document.getElementById("server-ip");
+const countEl = document.getElementById("player-count");
+const listEl = document.getElementById("player-list");
+
+function loadServer(){
+  fetch(API)
+    .then(r=>r.json())
+    .then(d=>{
+      box.style.display="block";
+
+      if(!d.online){
+        statusText.innerHTML="🔴 Server Offline";
         countEl.innerHTML="";
         listEl.innerHTML="";
-      });
-  }
+        return;
+      }
 
-  loadServer();
-  setInterval(loadServer,30000);
+      statusText.innerHTML="🟢 Server Online";
+      ipText.innerHTML="🌐 IP: <b>play.breadsmp.my.id</b> • PORT: <b>55555</b>";
+      countEl.innerHTML=`👥 Player: <b>${d.players.online}</b> / <b>${d.players.max}</b>`;
+
+      listEl.innerHTML="";
+
+      if(d.players.list){
+        d.players.list.forEach(p=>{
+          const name = typeof p === "string" ? p : p.name;
+          if(!name) return;
+
+          const el = document.createElement("div");
+          el.className="player-badge";
+          el.innerHTML=`
+            <img src="https://mc-heads.net/avatar/${name}/32">
+            ${name}
+          `;
+          listEl.appendChild(el);
+        });
+      }else{
+        listEl.innerHTML="<i>Daftar player disembunyikan</i>";
+      }
+    })
+    .catch(()=>{
+      statusText.innerHTML="⚠️ Status tidak tersedia";
+    });
+}
+
+loadServer();
+setInterval(loadServer, 5000);
 </script>
 
 </body>
