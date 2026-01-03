@@ -12,22 +12,25 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 
 body{
-  background:radial-gradient(circle at top,#1e3a8a,#020617 70%);
+  background:
+    radial-gradient(circle at 20% 10%,#1e40af55,transparent 40%),
+    radial-gradient(circle at 80% 30%,#9333ea55,transparent 45%),
+    linear-gradient(180deg,#020617,#020b2d);
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ⭐ PARTICLE */
+/* ✨ PARTICLE STAR */
 .star{
   position:fixed;
   width:2px;height:2px;
-  background:#60a5fa;
+  background:#93c5fd;
   border-radius:50%;
-  animation:float 6s linear infinite;
-  opacity:.6;
+  animation:float 8s linear infinite;
+  opacity:.7;
 }
 @keyframes float{
-  from{transform:translateY(100vh)}
+  from{transform:translateY(110vh)}
   to{transform:translateY(-10vh)}
 }
 
@@ -48,6 +51,7 @@ header img{
 header h1{
   font-size:3rem;
   color:#38bdf8;
+  text-shadow:0 0 25px rgba(56,189,248,.6);
 }
 
 header p{
@@ -57,7 +61,7 @@ header p{
 }
 
 .divider{
-  width:80px;height:4px;
+  width:90px;height:4px;
   background:linear-gradient(90deg,#38bdf8,transparent);
   margin:25px auto;border-radius:10px;
 }
@@ -65,15 +69,16 @@ header p{
 .btn{
   display:inline-block;
   margin:8px;
-  padding:14px 28px;
+  padding:14px 30px;
   background:linear-gradient(135deg,#2563eb,#38bdf8);
-  border-radius:16px;
+  border-radius:18px;
   color:#fff;
   text-decoration:none;
   font-weight:600;
+  box-shadow:0 12px 30px rgba(56,189,248,.4);
   transition:.3s;
 }
-.btn:hover{transform:scale(1.05)}
+.btn:hover{transform:translateY(-4px) scale(1.05)}
 
 section{
   padding:90px 20px;
@@ -93,9 +98,9 @@ section{
 .card{
   background:linear-gradient(180deg,#020617,#020b2d);
   border:1px solid #1e3a8a;
-  padding:28px;
-  border-radius:22px;
-  box-shadow:0 12px 30px rgba(0,0,0,.45);
+  padding:30px;
+  border-radius:24px;
+  box-shadow:0 18px 45px rgba(0,0,0,.55);
 }
 
 .card h3{color:#60a5fa;margin-bottom:10px}
@@ -104,21 +109,20 @@ section{
 #server-box{
   max-width:520px;
   margin:35px auto 0;
-  text-align:left;
 }
 
 .player-list{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  margin-top:10px;
+  margin-top:12px;
 }
 
 .player{
   display:flex;
   align-items:center;
   gap:8px;
-  padding:6px 10px;
+  padding:6px 12px;
   background:#020617;
   border:1px solid #1e3a8a;
   border-radius:999px;
@@ -140,7 +144,7 @@ footer{
 
 /* 📱 MOBILE */
 @media(max-width:600px){
-  header h1{font-size:2.3rem}
+  header h1{font-size:2.2rem}
   .btn{padding:12px 22px}
 }
 </style>
@@ -148,13 +152,12 @@ footer{
 
 <body>
 
-<!-- ⭐ PARTICLES -->
 <script>
-for(let i=0;i<40;i++){
+for(let i=0;i<55;i++){
   let s=document.createElement("div");
   s.className="star";
   s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=3+Math.random()*5+"s";
+  s.style.animationDuration=4+Math.random()*6+"s";
   document.body.appendChild(s);
 }
 </script>
@@ -167,9 +170,9 @@ for(let i=0;i<40;i++){
 
 <div class="divider"></div>
 
-<a class="btn" href="https://discord.gg/Z3Sz4CnNmm">Discord</a>
-<a class="btn" href="https://chat.whatsapp.com/EaiP7jSBymsHYaYXBBJgYL">WhatsApp</a>
-<a class="btn" href="https://minecraft-mp.com/server-s351550">Vote</a>
+<a class="btn" href="#">Discord</a>
+<a class="btn" href="#">WhatsApp</a>
+<a class="btn" href="#">Vote</a>
 
 <div id="server-box" class="card" style="display:none">
 <h3 id="status">🟡 Mengecek server...</h3>
@@ -187,18 +190,20 @@ for(let i=0;i<40;i++){
 </div>
 
 <div class="features">
-<div class="card"><h3>⚔️ Survival SMP</h3><p>Gameplay survival klasik dengan sistem economy seimbang.</p></div>
-<div class="card"><h3>🛡️ Claim & Anti Grief</h3><p>Proteksi tanah aman menggunakan sistem claim.</p></div>
-<div class="card"><h3>💼 Jobs System</h3><p>Dapatkan uang dari berbagai pekerjaan unik.</p></div>
-<div class="card"><h3>🎁 Gacha & Crate</h3><p>Hadiah menarik tanpa merusak keseimbangan.</p></div>
+<div class="card"><h3>⚔️ Survival SMP</h3><p>Gameplay survival klasik dengan economy seimbang.</p></div>
+<div class="card"><h3>🛡️ Claim & Anti Grief</h3><p>Proteksi tanah aman dan nyaman.</p></div>
+<div class="card"><h3>💼 Jobs System</h3><p>Dapatkan uang dari berbagai pekerjaan.</p></div>
+<div class="card"><h3>🎁 Gacha & Crate</h3><p>Hadiah seru tanpa merusak balance.</p></div>
 <div class="card"><h3>✨ Custom Enchant</h3><p>Enchant unik dengan efek spesial.</p></div>
-<div class="card"><h3>🗺️ Warp & RTP</h3><p>Teleport mudah ke berbagai lokasi.</p></div>
-<div class="card"><h3>🌍 Java & Bedrock</h3><p>Bisa dimainkan Java & MCPE (Geyser).</p></div>
-<div class="card"><h3>👥 Community Aktif</h3><p>Discord & WhatsApp aktif setiap hari.</p></div>
+<div class="card"><h3>🗺️ Warp & RTP</h3><p>Teleport cepat ke banyak lokasi.</p></div>
+<div class="card"><h3>📦 Auction House</h3><p>Jual beli item antar player.</p></div>
+<div class="card"><h3>🌍 Java & Bedrock</h3><p>Support Java & MCPE (Geyser).</p></div>
 </div>
 </section>
 
-<footer>© 2026 BreadSMP • Community Driven Minecraft Server</footer>
+<footer>
+© 2023 BreadSMP • Community Driven Minecraft Server
+</footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
@@ -223,11 +228,18 @@ status.innerHTML="🟢 Server Online";
 ip.innerHTML="🌐 IP: <b>play.breadsmp.my.id</b> • PORT: <b>55555</b>";
 count.innerHTML=`👥 Player: <b>${d.players.online}</b> / <b>${d.players.max}</b>`;
 players.innerHTML="";
-(d.players.list||[]).forEach(n=>{
-let p=document.createElement("div");
-p.className="player";
-p.innerHTML=`<img src="https://mc-heads.net/avatar/${n}/32">${n}`;
-players.appendChild(p);
+
+(d.players.list||[]).forEach(p=>{
+const name =
+  typeof p === "string"
+    ? p
+    : p.name || p.username || null;
+if(!name) return;
+
+const el=document.createElement("div");
+el.className="player";
+el.innerHTML=`<img src="https://mc-heads.net/avatar/${name}/32">${name}`;
+players.appendChild(el);
 });
 });
 }
