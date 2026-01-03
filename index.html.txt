@@ -16,13 +16,13 @@ body{
   background:
     repeating-linear-gradient(
       45deg,
-      rgba(255,255,255,.02) 0,
-      rgba(255,255,255,.02) 1px,
+      rgba(255,255,255,.03) 0,
+      rgba(255,255,255,.03) 1px,
       transparent 1px,
-      transparent 14px
+      transparent 16px
     ),
-    radial-gradient(circle at 15% 10%,#2563eb66,transparent 40%),
-    radial-gradient(circle at 85% 30%,#7c3aed66,transparent 45%),
+    radial-gradient(circle at 15% 15%,#2563eb55,transparent 40%),
+    radial-gradient(circle at 85% 35%,#7c3aed55,transparent 45%),
     linear-gradient(180deg,#020617,#020b2d);
   color:#fff;
   overflow-x:hidden;
@@ -58,8 +58,9 @@ header img{
   filter:drop-shadow(0 15px 40px rgba(56,189,248,.6));
 }
 
+/* ANIMATED TITLE */
 .logo-text{
-  font-size:3.3rem;
+  font-size:3.2rem;
   font-weight:900;
   background:linear-gradient(270deg,#38bdf8,#a855f7,#22c55e);
   background-size:600% 600%;
@@ -67,15 +68,24 @@ header img{
   -webkit-text-fill-color:transparent;
   animation:gradientMove 6s ease infinite;
 }
-
 @keyframes gradientMove{
   0%{background-position:0%}
   50%{background-position:100%}
   100%{background-position:0%}
 }
 
+/* TEXT SLIDE FROM LEFT */
+.slide-left{
+  animation:slideLeft 1.2s ease forwards;
+  opacity:0;
+}
+@keyframes slideLeft{
+  from{transform:translateX(-60px);opacity:0}
+  to{transform:translateX(0);opacity:1}
+}
+
 header p{
-  max-width:520px;
+  max-width:540px;
   margin:14px auto;
   color:#c7d2fe;
 }
@@ -106,7 +116,12 @@ section{
   margin:auto;
 }
 
-/* CARD */
+/* FEATURE */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+}
 .card{
   background:linear-gradient(180deg,#020617,#020b2d);
   border:1px solid #1e40af;
@@ -114,22 +129,21 @@ section{
   border-radius:26px;
   box-shadow:0 20px 50px rgba(0,0,0,.6);
 }
+.card h3{color:#60a5fa;margin-bottom:8px}
 
 /* PLAYER ONLINE */
 #server-box{
-  max-width:520px;
+  max-width:540px;
   margin:35px auto 0;
   border:1px solid #38bdf8;
   box-shadow:0 0 40px rgba(56,189,248,.35);
 }
-
 .player-list{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
   margin-top:14px;
 }
-
 .player{
   display:flex;
   align-items:center;
@@ -140,10 +154,7 @@ section{
   border-radius:999px;
   font-size:.9rem;
 }
-
-.player img{
-  width:30px;height:30px;border-radius:8px;
-}
+.player img{width:30px;height:30px;border-radius:8px}
 
 footer{
   text-align:center;
@@ -155,7 +166,7 @@ footer{
 }
 
 @media(max-width:600px){
-  .logo-text{font-size:2.3rem}
+  .logo-text{font-size:2.2rem}
   header img{width:130px}
 }
 </style>
@@ -174,10 +185,10 @@ for(let i=0;i<70;i++){
 </script>
 
 <header>
-<div data-aos="zoom-in">
+<div>
 <img src="logo.png" alt="BreadSMP Logo">
 <h1 class="logo-text">BreadSMP</h1>
-<p>Server SMP Indonesia dengan fitur lengkap dan komunitas aktif.</p>
+<p class="slide-left">Server SMP Indonesia dengan fitur lengkap dan komunitas aktif.</p>
 
 <div class="divider"></div>
 
@@ -193,6 +204,20 @@ for(let i=0;i<70;i++){
 </div>
 </div>
 </header>
+
+<section>
+<div class="features">
+<div class="card"><h3>⚔️ Survival SMP</h3><p>Gameplay survival klasik dengan economy seimbang.</p></div>
+<div class="card"><h3>🛡️ Claim & Anti Grief</h3><p>Proteksi tanah aman dan nyaman.</p></div>
+<div class="card"><h3>💼 Jobs System</h3><p>Dapatkan uang dari berbagai pekerjaan.</p></div>
+<div class="card"><h3>🎁 Gacha & Crate</h3><p>Hadiah seru tanpa merusak balance.</p></div>
+<div class="card"><h3>✨ Custom Enchant</h3><p>Enchant unik dengan efek spesial.</p></div>
+<div class="card"><h3>🗺️ Warp & RTP</h3><p>Teleport cepat ke banyak lokasi.</p></div>
+<div class="card"><h3>📦 Auction House</h3><p>Jual beli item antar player.</p></div>
+<div class="card"><h3>🪄 Sell Wand</h3><p>Jual item massal dengan cepat.</p></div>
+<div class="card"><h3>🌍 Java & Bedrock</h3><p>Support Java & MCPE (Geyser).</p></div>
+</div>
+</section>
 
 <footer>
 © 2023 BreadSMP • Community Driven Minecraft Server
