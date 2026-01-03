@@ -1,238 +1,239 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BreadSMP - Minecraft Server Indonesia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BreadSMP - Minecraft Server Indonesia</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 
-    body{
-      background:linear-gradient(135deg,#020617,#020b2d);
-      color:#fff;
-    }
+body{
+  background:radial-gradient(circle at top,#1e3a8a,#020617 70%);
+  color:#fff;
+  overflow-x:hidden;
+}
 
-    header{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:40px 20px;
-      background:
-        radial-gradient(circle at top,#1d4ed8,#020617 60%),
-        linear-gradient(180deg,#020617,#020b2d);
-    }
+/* ⭐ PARTICLE */
+.star{
+  position:fixed;
+  width:2px;height:2px;
+  background:#60a5fa;
+  border-radius:50%;
+  animation:float 6s linear infinite;
+  opacity:.6;
+}
+@keyframes float{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
+}
 
-    header img{
-      width:180px;
-      margin-bottom:25px;
-      filter:drop-shadow(0 12px 30px rgba(56,189,248,.6));
-    }
+header{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
 
-    header h1{
-      font-size:3.3rem;
-      color:#38bdf8;
-      text-shadow:0 0 20px rgba(56,189,248,.6);
-    }
+header img{
+  width:170px;
+  filter:drop-shadow(0 12px 30px rgba(56,189,248,.6));
+}
 
-    header p{
-      margin-top:12px;
-      max-width:520px;
-      margin-inline:auto;
-      color:#c7d2fe;
-    }
+header h1{
+  font-size:3rem;
+  color:#38bdf8;
+}
 
-    .divider{
-      width:90px;
-      height:4px;
-      background:linear-gradient(90deg,#38bdf8,transparent);
-      margin:28px auto;
-      border-radius:10px;
-    }
+header p{
+  max-width:520px;
+  margin:12px auto;
+  color:#c7d2fe;
+}
 
-    .btn{
-      display:inline-block;
-      margin:10px;
-      padding:14px 32px;
-      background:linear-gradient(135deg,#2563eb,#38bdf8);
-      color:#fff;
-      border-radius:16px;
-      font-weight:600;
-      text-decoration:none;
-      transition:.3s;
-    }
+.divider{
+  width:80px;height:4px;
+  background:linear-gradient(90deg,#38bdf8,transparent);
+  margin:25px auto;border-radius:10px;
+}
 
-    .btn:hover{
-      transform:translateY(-5px) scale(1.05);
-    }
+.btn{
+  display:inline-block;
+  margin:8px;
+  padding:14px 28px;
+  background:linear-gradient(135deg,#2563eb,#38bdf8);
+  border-radius:16px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.05)}
 
-    section{
-      padding:90px 20px;
-      max-width:1200px;
-      margin:auto;
-    }
+section{
+  padding:90px 20px;
+  max-width:1200px;
+  margin:auto;
+}
 
-    .title{text-align:center;margin-bottom:60px}
-    .title h2{color:#38bdf8}
-    .title p{color:#c7d2fe;margin-top:10px}
+.title{text-align:center;margin-bottom:60px}
+.title h2{color:#38bdf8;font-size:2.3rem}
 
-    .features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:32px;
-    }
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+}
 
-    .card{
-      background:linear-gradient(180deg,#020617,#020b2d);
-      border:1px solid #1e3a8a;
-      padding:32px;
-      border-radius:22px;
-      box-shadow:0 12px 28px rgba(0,0,0,.45);
-    }
+.card{
+  background:linear-gradient(180deg,#020617,#020b2d);
+  border:1px solid #1e3a8a;
+  padding:28px;
+  border-radius:22px;
+  box-shadow:0 12px 30px rgba(0,0,0,.45);
+}
 
-    .card h3{color:#60a5fa;margin-bottom:10px}
+.card h3{color:#60a5fa;margin-bottom:10px}
 
-    /* PLAYER LIST */
-    .player-list{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:10px;
-    }
+/* SERVER BOX */
+#server-box{
+  max-width:520px;
+  margin:35px auto 0;
+  text-align:left;
+}
 
-    .player-badge{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      background:#020617;
-      border:1px solid #1e3a8a;
-      border-radius:999px;
-      font-size:.9rem;
-    }
+.player-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
 
-    .player-badge img{
-      width:28px;
-      height:28px;
-      border-radius:6px;
-    }
+.player{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  background:#020617;
+  border:1px solid #1e3a8a;
+  border-radius:999px;
+  font-size:.9rem;
+}
 
-    footer{
-      text-align:center;
-      padding:28px;
-      background:#020617;
-      border-top:1px solid #1e3a8a;
-      color:#94a3b8;
-      font-size:.9rem;
-    }
-  </style>
+.player img{
+  width:28px;height:28px;border-radius:6px;
+}
+
+footer{
+  text-align:center;
+  padding:26px;
+  background:#020617;
+  border-top:1px solid #1e3a8a;
+  color:#94a3b8;
+  font-size:.9rem;
+}
+
+/* 📱 MOBILE */
+@media(max-width:600px){
+  header h1{font-size:2.3rem}
+  .btn{padding:12px 22px}
+}
+</style>
 </head>
 
 <body>
 
+<!-- ⭐ PARTICLES -->
+<script>
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=3+Math.random()*5+"s";
+  document.body.appendChild(s);
+}
+</script>
+
 <header>
-  <div data-aos="zoom-in">
-    <img src="logo.png" alt="BreadSMP Logo">
-    <h1>🍞 BreadSMP</h1>
-    <p>Server SMP Indonesia dengan komunitas aktif, sistem adil, dan gameplay nyaman.</p>
+<div data-aos="zoom-in">
+<img src="logo.png">
+<h1>🍞 BreadSMP</h1>
+<p>Server SMP Indonesia dengan gameplay nyaman, fitur lengkap, dan komunitas aktif.</p>
 
-    <div class="divider"></div>
+<div class="divider"></div>
 
-    <div>
-      <a href="https://discord.gg/Z3Sz4CnNmm" class="btn">Discord</a>
-      <a href="https://chat.whatsapp.com/EaiP7jSBymsHYaYXBBJgYL" class="btn">WhatsApp</a>
-      <a href="https://minecraft-mp.com/server-s351550" class="btn">Vote</a>
-    </div>
+<a class="btn" href="https://discord.gg/Z3Sz4CnNmm">Discord</a>
+<a class="btn" href="https://chat.whatsapp.com/EaiP7jSBymsHYaYXBBJgYL">WhatsApp</a>
+<a class="btn" href="https://minecraft-mp.com/server-s351550">Vote</a>
 
-    <!-- STATUS SERVER -->
-    <div id="server-box" class="card" style="max-width:480px;margin:30px auto 0;text-align:left;display:none">
-      <h3 id="mc-status-text">🟡 Mengecek server...</h3>
-      <p id="server-ip" style="color:#a5f3fc;margin:6px 0"></p>
-      <div id="player-count"></div>
-      <div id="player-list" class="player-list"></div>
-    </div>
-  </div>
+<div id="server-box" class="card" style="display:none">
+<h3 id="status">🟡 Mengecek server...</h3>
+<p id="ip" style="color:#a5f3fc"></p>
+<p id="count"></p>
+<div id="players" class="player-list"></div>
+</div>
+</div>
 </header>
 
 <section>
-  <div class="title" data-aos="fade-up">
-    <h2>✨ Fitur Unggulan BreadSMP</h2>
-    <p>Kenapa harus main di server kami?</p>
-  </div>
+<div class="title" data-aos="fade-up">
+<h2>✨ Fitur Unggulan BreadSMP</h2>
+<p style="color:#c7d2fe">Kenapa harus main di server kami?</p>
+</div>
 
-  <div class="features">
-    <div class="card"><h3>⚔️ Survival SMP</h3><p>Mode survival dengan economy seimbang, cocok untuk player santai maupun builder.</p></div>
-    <div class="card"><h3>🛡️ Claim & Anti Grief</h3><p>Sistem proteksi tanah agar bangunan tetap aman.</p></div>
-    <div class="card"><h3>🧑‍🔧 Jobs System</h3><p>Banyak pilihan pekerjaan untuk mendapatkan uang.</p></div>
-    <div class="card"><h3>🧭 Warp & Spawn</h3><p>Akses cepat ke lokasi penting server.</p></div>
-    <div class="card"><h3>✨ Custom Enchant</h3><p>Enchant unik dengan efek khusus.</p></div>
-    <div class="card"><h3>🎲 Gacha System</h3><p>Gacha item menarik tanpa merusak balance.</p></div>
-    <div class="card"><h3>🌍 Java & Bedrock</h3><p>Bisa dimainkan di Java & Bedrock Edition.</p></div>
-    <div class="card"><h3>👥 Community Aktif</h3><p>Discord & WhatsApp aktif dengan admin responsif.</p></div>
-  </div>
+<div class="features">
+<div class="card"><h3>⚔️ Survival SMP</h3><p>Gameplay survival klasik dengan sistem economy seimbang.</p></div>
+<div class="card"><h3>🛡️ Claim & Anti Grief</h3><p>Proteksi tanah aman menggunakan sistem claim.</p></div>
+<div class="card"><h3>💼 Jobs System</h3><p>Dapatkan uang dari berbagai pekerjaan unik.</p></div>
+<div class="card"><h3>🎁 Gacha & Crate</h3><p>Hadiah menarik tanpa merusak keseimbangan.</p></div>
+<div class="card"><h3>✨ Custom Enchant</h3><p>Enchant unik dengan efek spesial.</p></div>
+<div class="card"><h3>🗺️ Warp & RTP</h3><p>Teleport mudah ke berbagai lokasi.</p></div>
+<div class="card"><h3>🌍 Java & Bedrock</h3><p>Bisa dimainkan Java & MCPE (Geyser).</p></div>
+<div class="card"><h3>👥 Community Aktif</h3><p>Discord & WhatsApp aktif setiap hari.</p></div>
+</div>
 </section>
 
-<footer>
-  © 2023 BreadSMP • Community Driven Minecraft Server
-</footer>
+<footer>© 2026 BreadSMP • Community Driven Minecraft Server</footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({ duration: 900, once: true });
+AOS.init({duration:900,once:true});
 
 const API="https://api.mcsrvstat.us/3/play.breadsmp.my.id:55555";
 const box=document.getElementById("server-box");
-const statusText=document.getElementById("mc-status-text");
-const ipText=document.getElementById("server-ip");
-const countEl=document.getElementById("player-count");
-const listEl=document.getElementById("player-list");
+const status=document.getElementById("status");
+const ip=document.getElementById("ip");
+const count=document.getElementById("count");
+const players=document.getElementById("players");
 
-function loadServer(){
-  fetch(API).then(r=>r.json()).then(d=>{
-    box.style.display="block";
-    if(!d.online){
-      statusText.innerHTML="🔴 Server Offline";
-      return;
-    }
-
-    statusText.innerHTML="🟢 Server Online";
-    ipText.innerHTML="🌐 IP: <b>play.breadsmp.my.id</b> • PORT: <b>55555</b>";
-    countEl.innerHTML=`👥 Player: <b>${d.players.online}</b> / <b>${d.players.max}</b>`;
-    listEl.innerHTML="";
-
-    if(d.players.list){
-      const java=[],bedrock=[];
-      d.players.list.forEach(p=>{
-        const n=typeof p==="string"?p:p.name;
-        if(!n) return;
-        n.startsWith(".")?bedrock.push(n.replace(".","")):java.push(n);
-      });
-
-      [...java,...bedrock].forEach(n=>{
-        const isBedrock=bedrock.includes(n);
-        const el=document.createElement("div");
-        el.className="player-badge";
-        el.innerHTML=`
-          <img src="https://cravatar.eu/avatar/${n}/32" onerror="this.src='https://cravatar.eu/avatar/Steve/32'">
-          ${n}
-          <span style="font-size:.7rem;padding:2px 6px;border-radius:6px;background:${isBedrock?'#22c55e':'#3b82f6'}">
-            ${isBedrock?'BEDROCK':'JAVA'}
-          </span>`;
-        listEl.appendChild(el);
-      });
-    }
-  });
+function load(){
+fetch(API).then(r=>r.json()).then(d=>{
+box.style.display="block";
+if(!d.online){
+status.innerHTML="🔴 Server Offline";
+players.innerHTML="";
+return;
 }
-
-loadServer();
-setInterval(loadServer,5000);
+status.innerHTML="🟢 Server Online";
+ip.innerHTML="🌐 IP: <b>play.breadsmp.my.id</b> • PORT: <b>55555</b>";
+count.innerHTML=`👥 Player: <b>${d.players.online}</b> / <b>${d.players.max}</b>`;
+players.innerHTML="";
+(d.players.list||[]).forEach(n=>{
+let p=document.createElement("div");
+p.className="player";
+p.innerHTML=`<img src="https://mc-heads.net/avatar/${n}/32">${n}`;
+players.appendChild(p);
+});
+});
+}
+load();
+setInterval(load,5000);
 </script>
 
 </body>
 </html>
-
